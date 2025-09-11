@@ -5,27 +5,30 @@ An AI-powered assistant prototype built for **AgenticSprint: From Prototype to F
 This project demonstrates a simple **frontend (Streamlit)** connected to a **backend (FastAPI)**, ready for integration with AI models.
 
 ---
-## 📂 Project Structure
-## 📂 Project Structure
-```
 
+## 📂 Project Structure
+
+```
 .
 ├── app.py           # Streamlit frontend (chat UI)
-├── backend.py       # FastAPI backend (dummy AI response)
+├── backend/         # FastAPI backend (AI logic, API routes)
+│   ├── main.py      # FastAPI app entrypoint
+│   ├── ai.py        # AI model integration
+│   └── utils.py     # Helper functions
 ├── requirements.txt # Python dependencies
 └── README.md        # Project documentation
-
-````
+```
 
 ---
 
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
+
 ```bash
 git clone <repo-link>
 cd <repo-folder>
-````
+```
 
 ### 2️⃣ Install Dependencies
 
@@ -40,7 +43,7 @@ pip install -r requirements.txt
 ### Start Backend (Terminal 1)
 
 ```bash
-uvicorn backend:app --reload
+uvicorn backend.main:app --reload
 ```
 
 ### Start Frontend (Terminal 2)
@@ -49,7 +52,7 @@ uvicorn backend:app --reload
 streamlit run app.py
 ```
 
-The app will open automatically at:
+The app will open automatically at:  
 👉 [http://localhost:8501](http://localhost:8501)
 
 ---
@@ -57,15 +60,15 @@ The app will open automatically at:
 ## 💡 Features
 
 * 🖥️ **Frontend:** Chat-style UI built with Streamlit
-* ⚙️ **Backend:** FastAPI service (currently dummy AI response)
+* ⚙️ **Backend:** FastAPI service (AI model integration)
 * 🔗 **Integration:** Streamlit calls backend API for answers
-* 🎯 **Hackathon Ready:** Easy to extend with real AI models (Kritika’s part)
+* 🎯 **Hackathon Ready:** Modular, easy to extend
 
 ---
 
 ## 🔄 Demo Modes
 
-The project supports **two demo modes** (to avoid failure during judging):
+The project supports **two demo modes**:
 
 1. **Real Mode:** Connects to backend API (FastAPI with AI model).
 2. **Dummy Mode:** Uses placeholder response (safe fallback if backend fails).
@@ -82,12 +85,8 @@ The project supports **two demo modes** (to avoid failure during judging):
 
 ## 🌟 Next Steps
 
-* Replace dummy backend with AI pipeline (LLMs + vector DB).
-* Add memory + multi-agent orchestration.
-* Deploy final version for hackathon demo.
+* Integrate advanced AI pipeline (LLMs + vector DB)
+* Add memory + multi-agent orchestration
+* Deploy final version for hackathon demo
 
 ```
-
----
-
-
