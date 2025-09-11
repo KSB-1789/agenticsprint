@@ -14,6 +14,36 @@ if page == "Home":
 
 # Ask AI Page
 elif page == "Ask AI":
-    user_input = st.text_input("Enter your question:")
-    if st.button("Submit"):
-        st.write("🔮 Placeholder Answer: This will come from our backend.")
+    st.header("Chat with our AI 🤖")
+
+    if "messages" not in st.session_state:
+        st.session_state["messages"] = []
+
+    # Display existing chat messages
+    for msg in st.session_state["messages"]:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+
+    # User input box
+    if prompt := st.chat_input("Type your question..."):
+        # Save user message
+        st.session_state["messages"].append({"role": "user", "content": prompt})
+        
+        # Display user message immediately
+        with st.chat_message("user"):
+            st.markdown(prompt)
+        
+        # Placeholder AI response
+        import requests
+
+        # inside Ask AI section, after user enters prompt
+        response = requests.post("http://127.0.0.1:8000/ask", json={"question": prompt})
+
+        if response.status_code == 200:
+            answer = response.json()["answer"]
+        else:
+            answer = "⚠️ Backend error."
+
+        st.session_state["messages"].append({"role": "assistant", "content": answer})
+        with st.chat_message("assistant"):
+            st.markdown(answer)
