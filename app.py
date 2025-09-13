@@ -4,6 +4,32 @@ import time
 
 st.set_page_config(page_title="AgenticSprint Prototype", layout="centered")
 
+# --- Custom CSS for Sidebar ---
+st.markdown(
+    """
+    <style>
+    /* Move sidebar content up */
+    section[data-testid="stSidebar"] {
+        padding-top: 1rem !important;
+    }
+
+    /* Sidebar title */
+    section[data-testid="stSidebar"] .css-1v3fvcr, 
+    section[data-testid="stSidebar"] h1, h2, h3, h4 {
+        font-size: 1.7rem !important;
+        font-weight: 700 !important;
+    }
+
+    /* Sidebar radio labels */
+    section[data-testid="stSidebar"] label {
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # Sidebar
 st.sidebar.title("Navigation")
@@ -43,13 +69,13 @@ elif page == "Ask AI":
             else:
                 try:
                     response = requests.post(
-                        "http://127.0.0.1:8000/predict",
-                        json={"input": prompt},
-                        timeout=10
+                        "http://127.0.0.1:8000/ask",
+                        json={"question": prompt},  # matches Pydantic model
+                        timeout=15
                     )
                     if response.status_code == 200:
                         data = response.json()
-                        answer = data.get("output", "⚠️ No output field in response.")
+                        answer = data.get("answer", "⚠️ No 'answer' field in response.")
                     else:
                         answer = f"⚠️ Backend error: {response.status_code}"
                 except Exception as e:
