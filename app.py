@@ -72,9 +72,13 @@ elif page == "Ask AI":
                         "http://127.0.0.1:8000/ask",
                         json={"question": prompt},  # matches Pydantic model
                         timeout=15
+                        "http://127.0.0.1:8000/ask",
+                        json={"question": prompt},  # matches Pydantic model
+                        timeout=15
                     )
                     if response.status_code == 200:
                         data = response.json()
+                        answer = data.get("answer", "⚠️ No 'answer' field in response.")
                         answer = data.get("answer", "⚠️ No 'answer' field in response.")
                     else:
                         answer = f"⚠️ Backend error: {response.status_code}"
