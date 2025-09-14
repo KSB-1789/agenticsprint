@@ -1,0 +1,22 @@
+# .streamlit/config.toml
+# Theme configuration based on the "Midnight Ocean View" color palette.
+
+[theme]
+
+# The main color for interactive elements like buttons and selected radio buttons.
+# Using the brightest blue for high visibility.
+primaryColor = "#034078"
+
+# The primary background color for the main app area.
+# Using the darkest navy for the base.
+backgroundColor = "#0A1128"
+
+# The background color for the sidebar and other containers like st.expander.
+# Using the mid-tone blue for a layered look.
+secondaryBackgroundColor = "#001F54"
+
+# The color for all text to ensure readability on the dark background.
+textColor = "#FFFFFF"
+
+# A clean, default font choice.
+font = "sans serif"

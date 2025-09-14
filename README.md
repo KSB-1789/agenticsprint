@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 Start Backend (Terminal 1)
 
-uvicorn backend.main:app --reload
+uvicorn backend:app --reload
 
 
 Start Frontend (Terminal 2)
