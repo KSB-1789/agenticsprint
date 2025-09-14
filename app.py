@@ -230,4 +230,4 @@ elif page == "Ask AI":
 
         st.session_state["messages"].append({"role": "assistant", "content": answer})
         with st.chat_message("assistant"):
-            st.markdown(answer)
+            st.markdown(answer)                                                                                                                                 
