@@ -4,6 +4,108 @@ import time
 
 st.set_page_config(page_title="AgenticSprint Prototype", layout="centered")
 
+st.markdown(
+    """
+    <style>
+    /* Hide default Streamlit header */
+    [data-testid="stHeader"] {
+        display: none;
+    }
+    /* Main app background */
+    body, .main, [data-testid="stAppViewContainer"] {
+        background-color: #0F172A !important;  /* Slate-900 for premium dark look */
+        margin: 0 !important;
+    }
+    /* Sidebar styling */
+    section[data-testid="stSidebar"] {
+        background-color: #020617 !important;  /* Slate-950 */
+        padding: 1.5rem !important;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.3) !important;
+        position: relative;
+        min-height: 100vh;
+    }
+    /* Block container padding */
+    .block-container {
+        padding-top: 1rem !important;  /* Adjusted to account for removed header */
+        padding-bottom: 2rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        max-width: 1200px !important;
+        margin-top: 0 !important;
+    }
+    /* Headings */
+    h1, h2, h3 {
+        color: #F1F5F9 !important;  /* Slate-100 */
+        font-family: 'Inter', sans-serif !important;
+    }
+    /* File uploader */
+    .stFileUploader {
+        margin-bottom: 1.5rem !important;
+        background-color: #020617 !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+        border: 1px solid #1E293B !important;
+    }
+    /* Metrics */
+    .stMetric {
+        background-color: #1E293B !important;
+        padding: 1rem !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+        color: #F1F5F9 !important;
+    }
+    /* Captions */
+    .stCaption {
+        color: #94A3B8 !important;  /* Slate-400 */
+    }
+    /* Spinner */
+    div.stSpinner > div {
+        color: #F1F5F9 !important;
+    }
+    /* Sidebar upload spacer */
+    .sidebar-upload {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    /* Pin powered by to bottom of sidebar */
+    .sidebar-bottom {
+        position: absolute;
+        bottom: 2rem;
+        left: 1.5rem;
+        width: 80%;
+        color: #94A3B8;
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    /* Chat message styling for dark theme */
+    .stChatMessage {
+        background-color: #1E293B !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+        color: #F1F5F9 !important;
+    }
+    /* Chat input */
+    .stChatInput input {
+        background-color: #020617 !important;
+        color: #F1F5F9 !important;
+        border: 1px solid #1E293B !important;
+    }
+    /* Ensure content adjusts when sidebar collapses */
+    @media (max-width: 640px) {
+        .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        section[data-testid="stSidebar"] {
+            display: block; /* Ensure sidebar remains visible on small screens */
+            width: 100% !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Sidebar
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Ask AI"])
